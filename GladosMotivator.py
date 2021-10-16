@@ -3,13 +3,24 @@
 import tkinter
 import time
 import math
+import random
 #playsound requires version 1.2.2 new version is broken?
 from playsound import playsound 
+
 window = tkinter.Tk()
 window.title('GladOsMotivator')
 window.geometry('800x530')
 work = True 
-Break_Glines = ['brb.wav','didwell.wav']
+
+def play_Line():
+    Break_glines = ['brb.wav','didwell.wav']
+    Work_glines = ['imbecile.wav','justdoit.wav']
+    if work == True:
+        playsound(Break_glines[random.randint(0,2)])
+    else:
+        playsound(Work_glines[random.randrange(2)])
+
+
 
 
 def count_down(count):
@@ -21,12 +32,12 @@ def count_down(count):
         print(count)
         window.after(1000, count_down, count - 1)
     elif count == 0:
-        print(count)
+        print('switch!')
         global work 
         if work == True:
-            playsound(Break_Glines[1])
+            play_Line()
         else:
-            playsound('brb.wav')    
+            play_Line()
         work = ~ work
         
         start_timer()
@@ -55,13 +66,13 @@ start_button.place(x=25, y=380)
 reset_button =  tkinter.Button(text="Reset")
 reset_button.place(x=100, y=380)
 
-worktimentry = tkinter.Entry()
+worktimentry = tkinter.Entry(bg='black',fg='white')
 worktimentry.insert(0,'15')
 worktimentry.place(x=200,y=380, width = 20)
-worktimelabel = tkinter.Label(text='work')
+worktimelabel = tkinter.Label(text='work',fg='#000000')
 worktimelabel.place(x=225,y=380)
 
-breaktimentry = tkinter.Entry()
+breaktimentry = tkinter.Entry(bg='black',fg='white')
 breaktimentry.insert(0,'15')
 breaktimentry.place(x=200,y=400, width = 20)
 breaktimelabel = tkinter.Label(text='break')
@@ -83,6 +94,8 @@ window.mainloop()
 #radio buttons were switched out for customizable entry extra points if we create a lock but seems just aesthetic
 #TODO Noise packs and implentation
 #noise packs exist and are implented with playsound 1.2.2 next to create either a dict or a list of available packs and randomize
-#TODO resize buttons and windows 
+#TODO resize buttons and windows
+# need bolds weights for labels and possible resizing of entry widgets, coloring can be done with hexidecimals 
+# I need to finalize backround mage in an editor before placement 
 #im bad at graphic design some i waiting till the backend is up and functional before placement probably place this last
 #TODO add appenable todo list with crossout or checkbox 
