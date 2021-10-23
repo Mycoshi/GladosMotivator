@@ -7,9 +7,9 @@ import random
 #playsound requires version 1.2.2 new version is broken?
 from playsound import playsound
 import os
+import pathlib
 
-#TODO works and broken brought windows up 1 more then i wanted but w.e also no features but atleast it exists 
-# was broke is fixed was a double tk.tk windows and something with a root withdraw window but now CORE is defined as a tk.TK and everything can point at it by pointing at iself
+ss = pathlib.Path('/GladosMotivator/sounds/')
 
 class Core(tk.Tk):
     def __init__(self):
@@ -30,7 +30,7 @@ class Core(tk.Tk):
         self.geometry('800x530')
 
 
-        self.canvas =  tk.Canvas(width=800, height=850, )
+        self.canvas =  tk.Canvas(width=800, height=850,)
         self.background =  tk.PhotoImage(file='baseimg.png')
         self.canvas.create_image(470, 270, image=self.background)
         self.canvas.grid(column=1, row=0)
@@ -42,13 +42,13 @@ class Core(tk.Tk):
         self.reset_button.place(x=100, y=380)
 
         self.worktimentry = tk.Entry(bg='black',fg='white')
-        self.worktimentry.insert(0,'15')
+        self.worktimentry.insert(0,'1')
         self.worktimentry.place(x=200,y=380, width = 20)
         self.worktimelabel = tk.Label(text='work',fg='#000000')
         self.worktimelabel.place(x=225,y=380)
 
         self.breaktimentry = tk.Entry(bg='black',fg='white')
-        self.breaktimentry.insert(0,'15')
+        self.breaktimentry.insert(0,'1')
         self.breaktimentry.place(x=200,y=400, width = 20)
         self.breaktimelabel = tk.Label(text='break')
         self.breaktimelabel.place(x=225,y=400)
@@ -59,18 +59,19 @@ class Core(tk.Tk):
 
 
 
-
+#def still broken until we implement pathing to sound folder
     def play_Line(self):
             Break_glines = ['brb.wav','didwell.wav']
             Work_glines = ['imbecile.wav','justdoit.wav']
             if self.work == True:
-                playsound(Break_glines[random.randint(0,2)])
+                playsound('didwell.wav')
+               # playsound(Break_glines[random.randint(0,1)])
             else:
                 playsound(Work_glines[random.randrange(2)])
 
 
 
-
+#TODO CHECK IF TIMER BUG STILL EXISTS 
     def count_down(self, count):
         self.count_min = math.floor(count / 60)
         self.count_sec = count % 60
