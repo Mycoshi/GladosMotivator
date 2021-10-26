@@ -9,12 +9,6 @@ import glob
 from playsound import playsound
 import os
 
-
-#sound directory stuff is hard so lets try to state the mission of the module so i can maybe even quantify it into a function
-
-# I need an absolute path returned from a list of files in a subdirectory for a playsound() function
-#glob seems to be correct but we hae two issues one being the end file path looks like /a/b\\c.txt
-#the other being how to consider portability and not hardcoding locations and/or figuring out how a .exe packs
 print(glob.glob("C:/Users/Owner/Documents/GitHub/GladosMotivator/sounds/*"))
 
 class Core(tk.Tk):
@@ -67,6 +61,12 @@ class Core(tk.Tk):
 
 #def still broken until we implement pathing to sound folder
 #absolute pathings works i guess, but i need it relative for transport, also i dont want to typ that path 1000 times
+#sound directory stuff is hard so lets try to state the mission of the module so i can maybe even quantify it into a function
+
+# I need an absolute path returned from a list of files in a subdirectory for a playsound() function
+#glob seems to be correct but we hae two issues one being the end file path looks like /a/b\\c.txt
+#the other being how to consider portability and not hardcoding locations and/or figuring out how a .exe packs
+#would be nice if i could get the program to run straight from a pull wouldnt it?
     def play_Line(self):
             Break_glines = ['brb.wav','didwell.wav']
             Work_glines = ['imbecile.wav','justdoit.wav']
