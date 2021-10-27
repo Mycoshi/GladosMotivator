@@ -9,8 +9,6 @@ import glob
 from playsound import playsound
 import os
 
-print(glob.glob("C:/Users/Owner/Documents/GitHub/GladosMotivator/sounds/*"))
-
 class Core(tk.Tk):
     def __init__(self):
         super().__init__()
@@ -18,7 +16,7 @@ class Core(tk.Tk):
 # （・ｱ　（・ｱ　（・ｱ　⊂（・）
 # （＿） （＿） （＿）　 （＿つ
 
-
+        print(len(glob.glob("C:/Users/Owner/Documents/GitHub/GladosMotivator/sounds/*")))
     
         self.work = True 
 
@@ -68,14 +66,12 @@ class Core(tk.Tk):
 #the other being how to consider portability and not hardcoding locations and/or figuring out how a .exe packs
 #would be nice if i could get the program to run straight from a pull wouldnt it?
     def play_Line(self):
-            Break_glines = ['brb.wav','didwell.wav']
+            Break_glines = glob.glob("C:/Users/Owner/Documents/GitHub/GladosMotivator/sounds/*")
             Work_glines = ['imbecile.wav','justdoit.wav']
             if self.work == True:
-                playsound('C:/Users/Owner/Documents/GitHub/GladosMotivator/sounds/didwell.wav')
-               # playsound(Break_glines[random.randint(0,1)])
+                playsound(Break_glines[random.randint(0,50)])
             else:
-                playsound(Work_glines[random.randrange(2)])
-
+                playsound(Break_glines[random.randint(0,50)])
 
 
 #TODO CHECK IF TIMER BUG STILL EXISTS 
