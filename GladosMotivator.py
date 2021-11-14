@@ -65,13 +65,16 @@ class Core(tk.Tk):
 #glob seems to be correct but we hae two issues one being the end file path looks like /a/b\\c.txt
 #the other being how to consider portability and not hardcoding locations and/or figuring out how a .exe packs
 #would be nice if i could get the program to run straight from a pull wouldnt it?
+#break is obvious here gotta make non hard coded pathing to sound for pull requet fix 
     def play_Line(self):
-            Break_glines = glob.glob("C:/Users/Owner/Documents/GitHub/GladosMotivator/sounds/*")
-            Work_glines = ['imbecile.wav','justdoit.wav']
-            if self.work == True:
-                playsound(Break_glines[random.randint(0,50)])
-            else:
-                playsound(Break_glines[random.randint(0,50)])
+        Break_glines = glob.glob("C:/Users/jylau/Documents/GitHub/GladosMotivator/sounds/Break_time/*")
+        Work_glines = ['imbecile.wav','justdoit.wav']
+        if self.work == True:
+            print(Break_glines)
+            #playsound(Break_glines[random.randint(0,23)])
+        else:
+            print(len(Break_glines))
+            #playsound(Break_glines[random.randint(0,23)])
 
 
 #TODO CHECK IF TIMER BUG STILL EXISTS 
