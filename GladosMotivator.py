@@ -15,14 +15,14 @@ class Core(tk.Tk):
 
 # （・ｱ　（・ｱ　（・ｱ　⊂（・）
 # （＿） （＿） （＿）　 （＿つ
-
-        print(len(glob.glob("C:/Users/Owner/Documents/GitHub/GladosMotivator/sounds/*")))
     
         self.work = True 
 
 
 # （・ｱ　（・ｱ　（・ｱ　⊂（・）
 # （＿） （＿） （＿）　 （＿つ
+
+
 # UI
         self.title('GladOsMotivator')
         self.geometry('800x530')
@@ -39,11 +39,13 @@ class Core(tk.Tk):
         self.reset_button =  tk.Button(text="Reset")
         self.reset_button.place(x=100, y=380)
 
+        # trying to flip switches from red to green to indicate mode
         self.worktimentry = tk.Entry(bg='black',fg='white')
         self.worktimentry.insert(0,'1')
         self.worktimentry.place(x=200,y=380, width = 20)
         self.worktimelabel = tk.Label(text='work',fg='#000000')
         self.worktimelabel.place(x=225,y=380)
+
 
         self.breaktimentry = tk.Entry(bg='black',fg='white')
         self.breaktimentry.insert(0,'1')
@@ -54,27 +56,33 @@ class Core(tk.Tk):
 
         self.worktime = int(self.worktimentry.get())
         self.breaktime = int(self.breaktimentry.get())
-
-
-
-#def still broken until we implement pathing to sound folder
-#absolute pathings works i guess, but i need it relative for transport, also i dont want to typ that path 1000 times
-#sound directory stuff is hard so lets try to state the mission of the module so i can maybe even quantify it into a function
-
-# I need an absolute path returned from a list of files in a subdirectory for a playsound() function
-#glob seems to be correct but we hae two issues one being the end file path looks like /a/b\\c.txt
-#the other being how to consider portability and not hardcoding locations and/or figuring out how a .exe packs
-#would be nice if i could get the program to run straight from a pull wouldnt it?
-#break is obvious here gotta make non hard coded pathing to sound for pull requet fix 
-    def play_Line(self):
-        Break_glines = glob.glob("C:/Users/jylau/Documents/GitHub/GladosMotivator/sounds/Break_time/*")
-        Work_glines = ['imbecile.wav','justdoit.wav']
+#TODO  HERE
+    # idk it switches but the label doesnt
+    #this isnt right
+    def rLightGreenLight(self):
         if self.work == True:
-            print(Break_glines)
-            #playsound(Break_glines[random.randint(0,23)])
+            self.lightlabel = tk.Label(text='work',bg='#2ad60f')
+            self.worktimelabel.place(x=225,y=380)
+            print('greenlight')
         else:
-            print(len(Break_glines))
-            #playsound(Break_glines[random.randint(0,23)])
+            self.lightlabel = tk.Label(text='work',bg='#d60f0f')
+            self.worktimelabel.place(x=225,y=380)
+            print('redlight')
+
+
+        
+
+# 1- here a combination of os.path.dirname(os.path.abspath(__file__)) & Glob work to retrieve the place we are in and then cycle down into the folders we have knowledge of
+
+#fixed praise glob
+    def play_Line(self):
+        path = os.path.dirname(os.path.abspath(__file__))
+        Break_glines = glob.glob(path + "/sounds/Break_time/*")
+        Work_glines = glob.glob(path + "/sounds/Work_time/*")
+        if self.work == True:
+            playsound(Break_glines[random.randint(0,23)])
+        else:
+            playsound(Work_glines[random.randint(0,23)])
 
 
 #TODO CHECK IF TIMER BUG STILL EXISTS 
@@ -94,6 +102,7 @@ class Core(tk.Tk):
             else:
                 self.play_Line()
             self.work = ~ self.work
+            self.rLightGreenLight()
                 
             self.start_timer()
 
