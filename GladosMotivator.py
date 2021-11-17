@@ -59,15 +59,13 @@ class Core(tk.Tk):
 #TODO  HERE
     # idk it switches but the label doesnt
     #this isnt right
+    #THIS IS RIGHT!
     def rLightGreenLight(self):
         if self.work == True:
-            self.lightlabel = tk.Label(text='work',bg='#2ad60f')
-            self.worktimelabel.place(x=225,y=380)
-            print('greenlight')
+            print("greenlight")
         else:
-            self.lightlabel = tk.Label(text='work',bg='#d60f0f')
-            self.worktimelabel.place(x=225,y=380)
-            print('redlight')
+            self.worktimelabel.config (text='working',bg='#d60f0f')
+            print("redlight")
 
 
         
