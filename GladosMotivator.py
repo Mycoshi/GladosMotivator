@@ -9,6 +9,9 @@ import glob
 from playsound import playsound
 import os
 
+# Play with this whe ready for async voicelines
+#import asyncio
+
 class Core(tk.Tk):
     def __init__(self):
         super().__init__()
@@ -56,15 +59,17 @@ class Core(tk.Tk):
 
         self.worktime = int(self.worktimentry.get())
         self.breaktime = int(self.breaktimentry.get())
-#TODO  HERE
-    # idk it switches but the label doesnt
-    #this isnt right
-    #THIS IS RIGHT!
+
+
+        #button color switch working 
     def rLightGreenLight(self):
         if self.work == True:
+            self.worktimelabel.config (text='working',bg='#47d60f')
+            self.breaktimelabel.config (bg='#d60f0f')
             print("greenlight")
         else:
             self.worktimelabel.config (text='working',bg='#d60f0f')
+            self.breaktimelabel.config (bg='#47d60f')
             print("redlight")
 
 
