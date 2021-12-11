@@ -65,11 +65,11 @@ class Core(tk.Tk):
     def rLightGreenLight(self):
         if self.work == True:
             self.worktimelabel.config (text='working',bg='#47d60f')
-            self.breaktimelabel.config (bg='#d60f0f')
+            self.breaktimelabel.config (text='no cake'bg='#d60f0f')
             print("greenlight")
         else:
-            self.worktimelabel.config (text='working',bg='#d60f0f')
-            self.breaktimelabel.config (bg='#47d60f')
+            self.worktimelabel.config (text='not working',bg='#d60f0f')
+            self.breaktimelabel.config (text='cake' bg='#47d60f')
             print("redlight")
 
 
