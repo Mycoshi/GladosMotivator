@@ -8,9 +8,14 @@ import glob
 #playsound requires version 1.2.2 new version is broken?
 from playsound import playsound
 import os
+from tkinter.ttk import Label, Style
+from tkinter import Tk
 
 # Play with this whe ready for async voicelines
 #import asyncio
+
+
+
 
 class Core(tk.Tk):
     def __init__(self):
@@ -28,9 +33,12 @@ class Core(tk.Tk):
 
 # UI
 #BUILD TIMER STANDING 0:00 LABEL
+#font fixd with stupid easy font= must explore aperture fonts,
         self.title('GladOsMotivator')
         self.geometry('800x530')
 
+        self.style = Style(self.master)
+        self.style.configure("My.TLabel", font=('Arial', 25))
 
         self.canvas =  tk.Canvas(width=800, height=850,)
         self.background =  tk.PhotoImage(file='baseimg.png')
@@ -47,7 +55,7 @@ class Core(tk.Tk):
         self.worktimentry = tk.Entry(bg='black',fg='white')
         self.worktimentry.insert(0,'1')
         self.worktimentry.place(x=120,y=380, width = 20)
-        self.worktimelabel = tk.Label(text='work',fg='#000000')
+        self.worktimelabel = tk.Label(text='work',fg='#000000', font=('Helvatical bold',20))
         self.worktimelabel.place(x=120,y=280)
 
 
@@ -101,7 +109,7 @@ class Core(tk.Tk):
         if self.running == True:
             self.count_min = math.floor(count / 60)
             self.count_sec = count % 60
-            Timer = tk.Label(text=f" {self.count_min} : {self.count_sec} ", fg="white", bg='#4b5d69')
+            Timer = tk.Label(text=f" {self.count_min} : {self.count_sec} ", fg="white", bg='#4b5d69', font=('Helvatical bold',20))
             Timer.place(x=150,y=50)
             if count > 0:
                 print(count)
